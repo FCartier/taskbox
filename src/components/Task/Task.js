@@ -61,5 +61,3 @@ Task.propTypes = {
   /** Event to change the task to pinned */
   onPinTask: PropTypes.func,
 };
-
-Task.defaultProps = { onArchiveTask: () => {}, onPinTask: () => {} };
