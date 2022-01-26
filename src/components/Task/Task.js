@@ -8,6 +8,18 @@ export default function Task({
 }) {
   return (
     <div className={`list-item ${state}`}>
+      <div className="actions" onClick={(event) => event.stopPropagation()}>
+        {state !== "TASK_ARCHIVED" && (
+          // eslint-disable-next-line jsx-a11y/anchor-is-valid
+          <a onClick={() => onPinTask(id)}>
+            <span
+              className={`icon-star`}
+              id={`pinTask-${id}`}
+              aria-label={`pinTask-${id}`}
+            />
+          </a>
+        )}
+      </div>
       <label className="checkbox">
         <input
           type="checkbox"
@@ -29,19 +41,6 @@ export default function Task({
           readOnly={true}
           placeholder="Input title"
         />
-      </div>
-
-      <div className="actions" onClick={(event) => event.stopPropagation()}>
-        {state !== "TASK_ARCHIVED" && (
-          // eslint-disable-next-line jsx-a11y/anchor-is-valid
-          <a onClick={() => onPinTask(id)}>
-            <span
-              className={`icon-star`}
-              id={`pinTask-${id}`}
-              aria-label={`pinTask-${id}`}
-            />
-          </a>
-        )}
       </div>
     </div>
   );
